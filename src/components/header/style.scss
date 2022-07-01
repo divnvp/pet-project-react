@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #6633ff;
+
+  &-link {
+    font-size: 2rem;
+    font-weight: lighter;
+    color: white;
+    text-decoration: none;
+  }
+}
