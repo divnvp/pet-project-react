@@ -1,10 +1,12 @@
 import { api } from "./api.network";
 
-export default function makeSearch(params) {
+export default async function makeSearch(params) {
   const searchParams = new URLSearchParams(params);
   
-  return fetch(
-    `${api.baseUrl}/search?${searchParams}` , {
+  const r = await fetch(
+    `${api.baseUrl}/search?${searchParams}`, {
     method: "GET"
-  }).then(r => r.json());
+  });
+  
+  return await r.json();
 }
