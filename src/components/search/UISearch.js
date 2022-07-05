@@ -3,26 +3,29 @@ import makeSearch from "../../network/search.network";
 import "./style.scss";
 // Components
 import UIPage from "../page/UIPage";
+import UIAnswer from "../answer/UIAnswer";
 
 export const UISearch = () => {
   const params = {
     q: ""
   };
-  let response = {};
   const [ modelValue, setModelValue ] = useState("");
+  const [ collectionItems, setCollectionItems ] = useState([]);
 
   useEffect(() => {
     if(modelValue.length) {
       params.q = modelValue;
       const timeoutId = setTimeout(makeSearchWithInput, 1 * 500);
     
-       return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
     }
   }, [modelValue]);
 
-  const makeSearchWithInput = async() => {
+  const makeSearchWithInput = async () => {
     try {
-      response = (await makeSearch(params)).json();
+      const { collection } = await makeSearch(params);
+
+      setCollectionItems(collection.items);
     } catch(e) {
       alert(e);
     }
@@ -35,15 +38,19 @@ export const UISearch = () => {
   return (
     <UIPage>
       <div className="searching">
-        <span>Искать во Вселенной</span>
-        <input
-          value={modelValue}
-          autoFocus
-          type="text"
-          placeholder="Введите..."
-          onChange={handleChange}
-          className="searching__input"
-        />
+        <div className="searhing-row">
+          <span>Искать во Вселенной</span>
+          <input
+            value={modelValue}
+            autoFocus
+            type="text"
+            placeholder="Введите..."
+            onChange={handleChange}
+            className="searching__input"
+          />
+        </div>
+
+        {collectionItems.length > 1 && <UIAnswer collectionItems={collectionItems} />}
       </div>
     </UIPage>
   )
