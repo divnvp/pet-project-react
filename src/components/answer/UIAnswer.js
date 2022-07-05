@@ -8,13 +8,13 @@ export default function UIAnswer(props) {
 
       <table>
         <tbody>
-          {/* {
+          {
             props.collectionItems.map((item, index) =>
               <tr>
                 <UITableRow key={index} value={item} />
               </tr>
             )
-          } */}
+          }
         </tbody>
       </table>
     </div>
