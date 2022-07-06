@@ -1,7 +1,14 @@
+import "./style.scss";
+
 export default function UIAnswerRow(props) {
+  const getLocaleDate = () => {
+    return new Date(props.data.date_created).toLocaleString();
+  }
+  
   return (
-    <div>
-      <span>{props.title}</span>
+    <div className="answer">
+      <span>{props.data.title}</span>
+      <h5 className="answer-date">{getLocaleDate()}</h5>
     </div>
   )
 }
