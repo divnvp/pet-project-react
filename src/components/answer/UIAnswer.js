@@ -1,4 +1,4 @@
-import UIAnswerRow from "../table/UIAnswerRow";
+import UIAnswerRow from "./UIAnswerRow";
 
 export default function UIAnswer(props) {
   return (
