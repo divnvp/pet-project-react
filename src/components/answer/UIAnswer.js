@@ -1,18 +1,19 @@
 import UIAnswerRow from "./UIAnswerRow";
+import "./style.scss";
 
 export default function UIAnswer(props) {
   return (
     <div>
-      <span>Вселенная ответила</span>
+      <h4>Вселенная ответила</h4>
   
       {
         props.collectionItems.map(
           (item, index) =>
-            <div key={index}>
+            <div key={index} className="answer">
               {
                 item.data.map(
                   (data, index) =>
-                    <UIAnswerRow key={index} title={data.title} />
+                    <UIAnswerRow key={index} data={data} />
                 )
               }
             </div>
