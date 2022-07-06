@@ -10,3 +10,12 @@ export default async function makeSearch(params) {
   
   return await r.json();
 }
+
+async function getPicturesFrom(href) {
+  const r = await fetch(href);
+  return await r.json();
+}
+
+export {
+  getPicturesFrom
+}
