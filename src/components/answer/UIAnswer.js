@@ -13,7 +13,11 @@ export default function UIAnswer(props) {
               {
                 item.data.map(
                   (data, index) =>
-                    <UIAnswerRow key={index} data={data} />
+                    <UIAnswerRow
+                      key={index}
+                      data={data}
+                      links={item.links}
+                    />
                 )
               }
             </div>
